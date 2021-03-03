@@ -1,0 +1,1 @@
+La carpeta pruebagtk contiene el programa para calcular el error relativo y absoluto con los datos del valor verdadero y aproximado.  
