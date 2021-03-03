@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{0F3335B6-9D72-4E41-8F53-FA265ADDCB73}|Default">
+  <MonoDevelop.Ide.ItemProperties.PruebaGtk PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PruebaGtk/MainWindow.cs">
+    <Files>
+      <File FileName="PruebaGtk/Program.cs" Line="17" Column="1" />
+      <File FileName="PruebaGtk/MainWindow.cs" Line="38" Column="1" />
+      <File FileName="PruebaGtk/Error.cs" Line="30" Column="61" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PruebaGtk" expanded="True">
+            <Node name="PruebaGtk" expanded="True">
+              <Node name="MainWindow.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

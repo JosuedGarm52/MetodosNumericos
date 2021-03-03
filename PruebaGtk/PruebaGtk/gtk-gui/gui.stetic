@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+  </configuration>
+  <import>
+    <widget-library name="../bin/Debug/PruebaGtk.exe" internal="true" />
+  </import>
+  <widget class="Gtk.Window" id="MainWindow" design-size="479 361">
+    <property name="MemberName">calcular</property>
+    <property name="Title" translatable="yes">Calcular error</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <child>
+      <widget class="Gtk.Fixed" id="fixed2">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.Label" id="label3">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Introduce el valor verdadero</property>
+          </widget>
+          <packing>
+            <property name="X">22</property>
+            <property name="Y">21</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label4">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Introduce el valor aproximado</property>
+          </widget>
+          <packing>
+            <property name="X">241</property>
+            <property name="Y">20</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtVaprox">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">242</property>
+            <property name="Y">57</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label5">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Resultados</property>
+          </widget>
+          <packing>
+            <property name="X">22</property>
+            <property name="Y">112</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label6">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Error absoluto</property>
+          </widget>
+          <packing>
+            <property name="X">28</property>
+            <property name="Y">150</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label7">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Error relativo</property>
+          </widget>
+          <packing>
+            <property name="X">31</property>
+            <property name="Y">187</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtErel">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">148</property>
+            <property name="Y">183</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label8">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Error relativo porcentual</property>
+          </widget>
+          <packing>
+            <property name="X">32</property>
+            <property name="Y">234</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnCalcular">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Calcular</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnCalcularClicked" />
+          </widget>
+          <packing>
+            <property name="X">92</property>
+            <property name="Y">304</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnSalir">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Salir</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnSalirClicked" />
+          </widget>
+          <packing>
+            <property name="X">275</property>
+            <property name="Y">301</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtVtrue">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">25</property>
+            <property name="Y">51</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtEabs">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">False</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">148</property>
+            <property name="Y">133</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtErp">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">227</property>
+            <property name="Y">231</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>

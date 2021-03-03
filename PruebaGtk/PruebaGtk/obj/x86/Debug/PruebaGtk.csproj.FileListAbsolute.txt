@@ -1,0 +1,6 @@
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/bin/Debug/PruebaGtk.exe
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/bin/Debug/PruebaGtk.pdb
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/obj/x86/Debug/PruebaGtk.csprojAssemblyReference.cache
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/obj/x86/Debug/PruebaGtk.csproj.CoreCompileInputs.cache
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/obj/x86/Debug/PruebaGtk.exe
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/obj/x86/Debug/PruebaGtk.pdb

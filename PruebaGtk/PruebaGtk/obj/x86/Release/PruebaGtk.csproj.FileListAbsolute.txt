@@ -1,0 +1,3 @@
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/bin/Release/PruebaGtk.exe
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/obj/x86/Release/PruebaGtk.csproj.CoreCompileInputs.cache
+/home/josue-user/Repos/ProyectoC/C#/PruebaCTK/PruebaGtk/PruebaGtk/obj/x86/Release/PruebaGtk.exe
