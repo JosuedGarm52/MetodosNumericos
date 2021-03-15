@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{A20AB6AD-E88D-4595-8D7F-DF613631FC18}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MetodoError/MainWindow.cs">
+    <Files>
+      <File FileName="MetodoError/MainWindow.cs" Line="288" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MetodoError" expanded="True">
+            <Node name="MetodoError" expanded="True">
+              <Node name="MainWindow.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MetodoError PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
