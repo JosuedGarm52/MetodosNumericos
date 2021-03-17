@@ -53,6 +53,15 @@ public partial class MainWindow : Gtk.Window
         };
         Columnaxr.PackStart(activeCell, true);
         Columnaxr.AddAttribute(activeCell, "pixbuf", 6);
+        Gtk.TreeViewColumn Columnaet = new TreeViewColumn
+        {
+            Title = "Et",
+
+            Expand = true,
+            Sizing = TreeViewColumnSizing.Fixed
+        };
+        Columnaet.PackStart(activeCell, true);
+        Columnaet.AddAttribute(activeCell, "pixbuf", 6);
         Gtk.TreeViewColumn Columnaea = new TreeViewColumn
         {
             Title = "Ea",
@@ -67,6 +76,7 @@ public partial class MainWindow : Gtk.Window
         Tabla.AppendColumn(Columnaxu);
         Tabla.AppendColumn(Columnaxr);
         Tabla.AppendColumn(Columnaea);
+        Tabla.AppendColumn(Columnaet);
         Gtk.CellRendererText xlNameCell = new Gtk.CellRendererText();
         Columnaxl.PackStart(xlNameCell, true);
         Gtk.CellRendererText xuNameCell = new Gtk.CellRendererText();
@@ -77,12 +87,15 @@ public partial class MainWindow : Gtk.Window
         Columnaxr.PackStart(xrNameCell, true);
         Gtk.CellRendererText eaNameCell = new Gtk.CellRendererText();
         Columnaea.PackStart(eaNameCell, true);
+        Gtk.CellRendererText etNameCell = new Gtk.CellRendererText();
+        Columnaet.PackStart(etNameCell, true);
         ColumnaIt.AddAttribute(ItNameCell, "text", 0);
         Columnaxl.AddAttribute(xlNameCell, "text", 1);
         Columnaxu.AddAttribute(xuNameCell, "text", 2);
         Columnaxr.AddAttribute(xrNameCell, "text", 3);
         Columnaea.AddAttribute(eaNameCell, "text", 4);
-        musicListStore = new Gtk.ListStore(typeof(string), typeof(string), typeof(string), typeof(string), typeof(string));
+        Columnaet.AddAttribute(etNameCell, "text", 5);
+        musicListStore = new Gtk.ListStore(typeof(string), typeof(string), typeof(string), typeof(string), typeof(string), typeof(string));
         //musicListStore.AppendValues("1", "Garbage", "Dog","xxxx","x");
         Tabla.Model = musicListStore;
         this.ShowAll();
@@ -95,7 +108,7 @@ public partial class MainWindow : Gtk.Window
         Application.Quit();
         a.RetVal = true;
     }
-    private void CalcularBiseccion()
+    private void CalcularFPosicion()
     {
         try
         {
@@ -106,20 +119,21 @@ public partial class MainWindow : Gtk.Window
                 mensaje.Run();
                 mensaje.Destroy();
             }
-            else if (txtXu.Text != "" && txtXl.Text != ""&& (txtEs.Text!=""||txtLimite.Text!=""))
+            else if (txtXu.Text != "" && txtXl.Text != ""&& txtVVerdadero.Text != "" && (txtEs.Text!=""||txtLimite.Text!=""))
             {
+                musicListStore.Clear();//Se limpia la tabla si se cumplen las condiciones
                 //Si cumple la condicion de los textbox de Xu, xl y alguno de los dos textbox de limite o  Es de no estar vacios continua.
-            if (rdbEs.Active)
+            if (rdbEs.Active)//Si el radiobutton de la condicion del Es esta activada se hara lo siguiente:
                 {
 
-                    double es = double.Parse(txtEs.Text);
-                    Calculo(es);
+                    double es = double.Parse(txtEs.Text);//Se obtiene el valor del textbox de la condicion Es
+                    MetodoFalsaPosicion(es);
                     //Se ejecutara el metodo Calculo(es) que hara la operacion si Ea < Es 
                 }
-                if (rdbLimite.Active)
+                if (rdbLimite.Active)//Si el radiobutton de la condicion del Es esta activada se hara lo siguiente:
                 {
-                    int limite = int.Parse(txtLimite.Text);
-                    Calculo(limite);
+                    int limite = int.Parse(txtLimite.Text);//Se obtiene el entero del textbox del limite de iteraciones
+                    MetodoFalsaPosicion(limite);
                     //Se ejecutara el metodo Calculo(es) que hara la operacion hasta el limite introducido
                 }
             }
@@ -243,8 +257,9 @@ public partial class MainWindow : Gtk.Window
     {
         try
         {
-            //Se llama al metodo CalcularBiseccion()
-            CalcularBiseccion();
+            //Este metodo se utiliza cuando se pulsa el boton Calcular
+            //Se llama al metodo CalcularFPosicion()
+            CalcularFPosicion();
         }
         catch (Exception ex)
         {
@@ -331,8 +346,8 @@ public partial class MainWindow : Gtk.Window
     {
         try
         {
-            Calculo pc = new Calculo();
-            if (pc.Sintaxis(txtFuncion.Text, 'x'))
+            Calculo pc = new Calculo();//Se llama a la clase Calculo
+            if (pc.Sintaxis(txtFuncion.Text, 'x'))//Se llama al metodo de la clase para comprobar si la funcion funciona
             {
                 double fx = pc.EvaluaFx(_dblValorX);//Realiza la operacion sustituyendo x por le valor del parametro
 
@@ -359,6 +374,7 @@ public partial class MainWindow : Gtk.Window
         txtXl.Text = "";
         txtXu.Text = "";
         txtLimite.Text = "";
+        txtVVerdadero.Text = "";
         musicListStore.Clear();
     }
 
@@ -371,5 +387,184 @@ public partial class MainWindow : Gtk.Window
     {
         string var = txtFuncion.Text;
         txtFuncion.Text = $"{var}exp(x)";//Se agrega al textbox de la funcion la forma que interpreta e
+    }
+
+    private void MetodoFalsaPosicion(double Es)
+    {
+        try
+        { 
+            //Se declaran los datos
+            double Xl = double.Parse(txtXl.Text);
+            double Xu = double.Parse(txtXu.Text);
+            double Xr, Et, Ea, XrViejo;
+            int It = 1;//el numero de iteraciones
+            bool blnContinuar = true;/*el valor booleano es para continuar la iteracion*/
+            double Fxl = AnalizarFuncion(Xl);/*Se llama el metodo AnalizarFuncion(Xl) para obtener el resultado de la funcion dada
+            por el usuario reemplazando la variable por el parametro dado*/
+            double Fxu = AnalizarFuncion(Xu);
+            //Se aplica la formula para xr
+            Xr = Xu - (Fxu *(Xl   - Xu )  / (Fxl - Fxu));
+            double Vverdadero = double.Parse(txtVVerdadero.Text);
+            Et = (Math.Abs((Vverdadero - Xr) / Vverdadero) * 100);
+            musicListStore.AppendValues($"{It}", $"{Xl}", $"{Xu}", $"{Xr}", $"0", $"{Et}");//Se introducen los datos en la tabla
+            double xx = Fxl * AnalizarFuncion(Xr);
+            /*xx es la mutiplicacion de la funcion con el valor xl y con la funcion con el valor xr*/
+            if(xx>0)
+            {
+                Xl = Xr;//Si la variable xx es positiva Xl sera igual a Xr
+                do
+                {
+                    It++;
+                    Fxl = AnalizarFuncion(Xl);//Se reemplaza la variable por el valor del parametro xl de esta iteracion
+                    Fxu = AnalizarFuncion(Xu);//Se reemplaza la variable por el valor del parametro xu de esta iteracion
+                    XrViejo = Xr;//Se guarda el Xr viejo
+                    Xr = Xu - ((Fxu * (Xl - Xu) / (Fxl - Fxu)));//Se usa la formula para obtener el nuevo xr
+                    Et = (Math.Abs((Vverdadero - Xr) / Vverdadero) * 100);//La formula del error verdadero
+                    Ea = (Math.Abs((Xr - XrViejo) / Xr)) * 100;//La formula de Error absoluto
+                    xx = Fxl * Fxu;
+                    if(xx>0)
+                    {
+                        Xl = Xr;//Si la variable xx es positiva Xl sera igual a Xr
+                    }
+                    else if (xx < 0)
+                    {
+                        Xu = Xr;//Si la variable xx es positiva Xu sera igual a Xr
+                    }
+                    else
+                    {
+                        blnContinuar = false;//Si llega a ser 0 es termina la iteracion
+                    }
+                    musicListStore.AppendValues($"{It}", $"{Xl}", $"{Xu}", $"{Xr}", $"{Ea}", $"{Et}");
+                    //Se introducen los datos en la tabla
+                } while (blnContinuar && Ea>=Es);
+                //si la variable blncontinuar es verdadera y la condicion Ea es mayor o igual a Es dado como parametro
+            }
+            else if(xx<0)
+            {
+                Xu = Xr;//Si la variable xx es positiva Xu sera igual a Xr
+                do
+                {
+                    It++;
+                    Fxl = AnalizarFuncion(Xl);
+                    Fxu = AnalizarFuncion(Xu);
+                    XrViejo = Xr;
+                    Xr = Xu - ((Fxu * (Xl - Xu) / (Fxl - Fxu)));
+                    Et = (Math.Abs((Vverdadero - Xr) / Vverdadero) * 100);
+                    Ea = (Math.Abs((Xr - XrViejo) / Xr)) * 100;
+                    xx = Fxl * Fxu;
+                    if (xx > 0)
+                    {
+                        Xl = Xr;
+                    }
+                    else if (xx < 0)
+                    {
+                        Xu = Xr;
+                    }
+                    else
+                    {
+                        blnContinuar = false;
+                    }
+                    musicListStore.AppendValues($"{It}", $"{Xl}", $"{Xu}", $"{Xr}", $"{Ea}", $"{Et}");
+                } while (blnContinuar && Ea >= Es);
+            }
+            else
+            {
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("" + ex);
+        }
+    }
+    private void MetodoFalsaPosicion(int Limite)
+    {
+        try
+        {
+            double Xl = double.Parse(txtXl.Text);
+            double Xu = double.Parse(txtXu.Text);
+            double Xr, Et, Ea, XrViejo;
+            int It = 1;
+            bool blnContinuar = true;
+            double Fxl = AnalizarFuncion(Xl);
+            double Fxu = AnalizarFuncion(Xu);
+            Xr = Xu - (Fxu * (Xl - Xu) / (Fxl - Fxu));
+            double Vverdadero = double.Parse(txtVVerdadero.Text);
+            Et = (Math.Abs((Vverdadero - Xr) / Vverdadero) * 100);
+            musicListStore.AppendValues($"{It}", $"{Xl}", $"{Xu}", $"{Xr}", $"0", $"{Et}");
+            double xx = Fxl * AnalizarFuncion(Xr);
+            if (xx > 0)
+            {
+                Xl = Xr;
+                do
+                {
+                    It++;
+                    Fxl = AnalizarFuncion(Xl);
+                    Fxu = AnalizarFuncion(Xu);
+                    XrViejo = Xr;
+                    Xr = Xu - ((Fxu * (Xl - Xu) / (Fxl - Fxu)));
+                    Et = (Math.Abs((Vverdadero - Xr) / Vverdadero) * 100);
+                    Ea = (Math.Abs((Xr - XrViejo) / Xr)) * 100;
+                    xx = Fxl * Fxu;
+                    if (xx > 0)
+                    {
+                        Xl = Xr;
+                    }
+                    else if (xx < 0)
+                    {
+                        Xu = Xr;
+                    }
+                    else
+                    {
+                        blnContinuar = false;
+                    }
+                    musicListStore.AppendValues($"{It}", $"{Xl}", $"{Xu}", $"{Xr}", $"{Ea}", $"{Et}");
+                } while (blnContinuar && It < Limite);
+                //Igual que el metodo de la condicion Ea>=Es pero ahora la iteracion pide que 
+                //blnContinuar sea verdadero y la variable iteracion sea menor al limite dado como parametro
+                }
+            else if (xx < 0)
+            {
+                Xu = Xr;
+                do
+                {
+                    It++;
+                    Fxl = AnalizarFuncion(Xl);
+                    Fxu = AnalizarFuncion(Xu);
+                    XrViejo = Xr;
+                    Xr = Xu - ((Fxu * (Xl - Xu) / (Fxl - Fxu)));
+                    Et = (Math.Abs((Vverdadero - Xr) / Vverdadero) * 100);
+                    Ea = (Math.Abs((Xr - XrViejo) / Xr)) * 100;
+                    xx = Fxl * Fxu;
+                    if (xx > 0)
+                    {
+                        Xl = Xr;
+                    }
+                    else if (xx < 0)
+                    {
+                        Xu = Xr;
+                    }
+                    else
+                    {
+                        blnContinuar = false;
+                    }
+                    musicListStore.AppendValues($"{It}", $"{Xl}", $"{Xu}", $"{Xr}", $"{Ea}", $"{Et}");
+                } while (blnContinuar && It < Limite);
+            }
+            else
+            {
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("" + ex);
+        }
+    }
+    private void MensajeBox(string mss)
+    {
+        MessageDialog mensaje = new MessageDialog(null, DialogFlags.DestroyWithParent, MessageType.Error, ButtonsType.Ok, $"{mss}");
+        mensaje.Run();
+        mensaje.Destroy();
     }
 }

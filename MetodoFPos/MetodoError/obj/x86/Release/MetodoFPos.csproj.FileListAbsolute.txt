@@ -1,0 +1,6 @@
+/home/josue-user/Repos/MetodosNum/MetodoFPos/MetodoError/bin/Release/MetodoError.exe
+/home/josue-user/Repos/MetodosNum/MetodoFPos/MetodoError/bin/Release/Calculus.dll
+/home/josue-user/Repos/MetodosNum/MetodoFPos/MetodoError/obj/x86/Release/MetodoFPos.csprojAssemblyReference.cache
+/home/josue-user/Repos/MetodosNum/MetodoFPos/MetodoError/obj/x86/Release/MetodoFPos.csproj.CoreCompileInputs.cache
+/home/josue-user/Repos/MetodosNum/MetodoFPos/MetodoError/obj/x86/Release/MetodoFPos.csproj.CopyComplete
+/home/josue-user/Repos/MetodosNum/MetodoFPos/MetodoError/obj/x86/Release/MetodoError.exe

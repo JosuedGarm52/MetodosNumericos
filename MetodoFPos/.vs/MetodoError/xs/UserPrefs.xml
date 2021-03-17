@@ -1,31 +1,20 @@
 ﻿<Properties StartupConfiguration="{A20AB6AD-E88D-4595-8D7F-DF613631FC18}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="MetodoError/MainWindow.cs">
     <Files>
-      <File FileName="MetodoError/MainWindow.cs" Line="121" Column="53" />
+      <File FileName="MetodoError/MainWindow.cs" Line="288" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MetodoError" expanded="True">
-            <Node name="MetodoError" expanded="True">
-              <Node name="MainWindow.cs" selected="True" />
-            </Node>
+            <Node name="MetodoError" expanded="True" selected="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>Et</Value>
-          <Value>Ea</Value>
-          <Value>Es</Value>
-          <Value>Xr</Value>
-          <Value>XrAntiguo</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MetodoError PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.MetodoFPos PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

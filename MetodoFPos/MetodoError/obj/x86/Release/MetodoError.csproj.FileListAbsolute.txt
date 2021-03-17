@@ -3,4 +3,3 @@
 /home/josue-user/Repos/MetodosNum/MetodoError/MetodoError/obj/x86/Release/MetodoError.csproj.CoreCompileInputs.cache
 /home/josue-user/Repos/MetodosNum/MetodoError/MetodoError/obj/x86/Release/MetodoError.csproj.CopyComplete
 /home/josue-user/Repos/MetodosNum/MetodoError/MetodoError/obj/x86/Release/MetodoError.exe
-/home/josue-user/Repos/MetodosNum/MetodoError/MetodoError/obj/x86/Release/MetodoError.csprojAssemblyReference.cache
