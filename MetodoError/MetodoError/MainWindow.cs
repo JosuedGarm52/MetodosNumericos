@@ -108,8 +108,9 @@ public partial class MainWindow : Gtk.Window
             }
             else if (txtXu.Text != "" && txtXl.Text != ""&& (txtEs.Text!=""||txtLimite.Text!=""))
             {
+                musicListStore.Clear();
                 //Si cumple la condicion de los textbox de Xu, xl y alguno de los dos textbox de limite o  Es de no estar vacios continua.
-            if (rdbEs.Active)
+                if (rdbEs.Active)
                 {
 
                     double es = double.Parse(txtEs.Text);
@@ -187,6 +188,7 @@ public partial class MainWindow : Gtk.Window
             throw new Exception("" + ex);
         }
     }
+    //(x^3)-7*(x^2)+14*x-6
     private void Calculo(int Numero_iteraciones)
     {
         try
@@ -201,14 +203,14 @@ public partial class MainWindow : Gtk.Window
             {
                 Xr = (Xl + Xu) / 2;
                 double XrViejo = Xr;
-                if (Xr < 0 && Xr > 0)
+                if (Math.Abs(Xu + Xl) > 0)
                 {
-                    Ea = Math.Abs((Xr - XrViejo) / Xr) * 100;
+                    Ea = Math.Abs((Xu - Xl) / (Xu + Xl)) * 100;
                     musicListStore.AppendValues($"{Iteracion}", $"{Xl}", $"{Xu}", $"{Xr}", $"{Ea}");
                 }
                 else
                 {
-                    musicListStore.AppendValues($"{Xl}", $"{Xu}", $"{Xr}", "Indeterminada");
+                    musicListStore.AppendValues(""+Iteracion,$"{Xl}", $"{Xu}", $"{Xr}", "Indeterminada");
                 }
                 XX = AnalizarFuncion(Xl) * AnalizarFuncion(Xr);//La formula para comprobar si se sustituira Xu o Xl
                 if (XX < 0)
@@ -225,7 +227,7 @@ public partial class MainWindow : Gtk.Window
                 }
 
                 Iteracion++;
-            } while (blnContinua && Iteracion==Numero_iteraciones);
+            } while (blnContinua && Iteracion<=Numero_iteraciones);
             //Si es cero o si es igual el numero de iteraciones al introducido como parametro se rompe el ciclo
             //Este es el metodo que limita el numero de iteraciones
         }
